@@ -23,7 +23,7 @@ describe('User', () => {
   });
 
   it('should be able to store a user name', () => {
-    expect(user.name).to.equal('Luisa');
+    expect(user.name).to.equal('Luisa Hane');
   });
 
   it('should be able to store a user address', () => {

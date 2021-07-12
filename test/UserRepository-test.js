@@ -1,9 +1,10 @@
 import { expect } from 'chai';
+import userData from '../src/data/user-test-data';
 import UserRepository from '../src/UserRepository';
-import userData from '../src/data/users';
+
 
 describe('User Repository', () => {
-  let userRepository
+  let userRepository;
 
   beforeEach(() => {
     userRepository = new UserRepository(userData);
@@ -18,8 +19,14 @@ describe('User Repository', () => {
   });
 
   it('should be able to hold user data', () => {
-    
-    expect().to.equal();
+    expect(userRepository.data).to.deep.equal(userData);
   });
-  
+
+  it('should be able to get user by ID', () => {
+    expect(userRepository.getUserByID(1)).to.deep.equal(userData[0]);
+  });
+
+  it('should be able to calculate the average step goal amongst all users', () => {
+    expect(userRepository.calculateAverageStepGoal()).to.equal(6941);
+  });
 });

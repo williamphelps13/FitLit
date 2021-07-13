@@ -2,13 +2,58 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Activity Tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <title>FitLit Activity Tracker</title>
   </head>
   <body>
-    <h1>Activity Tracker</h1>
-    <img src="./images/turing-logo.png" alt="turing logo" height="100px" width="100px">
-
-<!-- Do not include the scripts.js file here - it is done automatically by the webpack server -->
+    <section>
+      <h1 id="welcome">Welcome Luisa!</h1>
+    </section>
+    <section>
+      <h2>Water Today</h2>
+      <p class = "spaced big" id="water-today">24oz</p>
+    </section>
+    <section>
+      <h2>Water for Last 7 Days</h2>
+      <p class="waterWeek" id="water-week">1/16 29oz<br> 1/17 36oz<br> 1/18 73oz<br> 1/20 68oz<br> 1/21 83oz<br> 1/22 24oz<br></p>
+    </section>
+    <section>
+      <h2>Sleep Today</h2>
+      <p class="spaced medium" id="sleep-hrs-today">6.1hrs</p>
+      <p class="spaced medium" id="sleep-quality-today">2.6/5 Quality</p>
+    </section>
+    <section>
+      <h2>Sleep for Last 7 Days</h2>
+      <p id="sleep-week">1/16 8.2 3.2<br> 1/17 7.6 4.6<br> 1/18 5.9 3.9<br> 1/19 8.1 4.3<br> 1/20 6.7 4.2<br> 1/21 9.1 3.7<br> 1/22 6.1 2.6</p>
+    </section>
+    <section>
+      <h2>Sleep Avg All Time</h2>
+      <p class="spaced medium" id="sleep-hours-avg-all">7.1hrs</p>
+      <p class="spaced medium" id="sleep-quality-avg-all">3.5/5 Quality</p>
+    </section>
+    <section>
+      <h2>Step Goal</h2>
+      <p class="spaced">Daily Step Goal</p>
+      <p class="medium" id="step-goal">10,000</p>
+      <p class="spaced">Avg Step Goal All Users</p>
+      <p class="medium" id="avg-step-goal">6,941</p>
+    </section>
+    <section>
+      <h2>Your Info</h2>
+      <div class="alignLeft" id="info">
+        <p>Name - Luisa Hane</p>
+        <p>Address - 15195 Nakia Tunnel Erdmanport, VA 19901</p>
+        <p>Email - Diana.Hayes1@hotmail.com</p>
+        <p>Stride Length - 4.3</p>
+      </div>
+    </section>
+    <section>
+      <h2>Friends</h2>
+      <p class="spaced" id="friends">Mae Connelly<br>Laney Abshire<br>Garnett Cruickshank</p>
+    </section>
     <script src="bundle.js"></script>
   </body>
 </html>

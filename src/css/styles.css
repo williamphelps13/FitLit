@@ -1,5 +1,58 @@
-body, html {
-  background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-  background-repeat: no-repeat;
-  height: 100%;
+body {
+  background-image: url("https://cdn.dribbble.com/users/47606/screenshots/11021235/media/b83023c7781e7ebc5fa322bceaa8e79f.png");
+  font-family: 'Actor';
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  grid-template-rows: repeat(3,1fr);
 }
+
+section {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: .9em;
+  margin: .5em;
+  height: 30vh;
+  width: 30vh;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.welcome {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  font-style: italic;
+  font-size: 1.8em;
+  margin: 2.5em, 0, 0, 0;
+  padding: 0em;
+}
+
+p {
+  margin: .3em 2em 0em 2em;
+  padding: 0em;
+}
+
+.spaced {
+  font-size: 1.2em;
+  margin: .7em 2em .7em 2em;
+  padding: 0em;
+}
+
+.alignLeft {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.medium {
+  font-size: 1.5em;
+}
+
+.big {
+  font-size: 2.5em;

@@ -18,6 +18,12 @@ import User from './User';
 const welcomeName = document.getElementById('welcome');
 const stepGoal = document.getElementById('step-goal');
 const avgStepGoal = document.getElementById('avg-step-goal');
+const userName = document.getElementById('full-name');
+const userAddress = document.getElementById('address');
+const userEmail = document.getElementById();
+const userStrideLength = document.getElementById();
+const userFriends = document.getElementById();
+('avg-step-goal');
 // function to get data from the API
 
 getData('api/v1/users').then((data) => {
@@ -26,7 +32,7 @@ getData('api/v1/users').then((data) => {
   console.log(user);
   console.log(userRepository);
 
-  welcomeName.innerText = user.getFirstName();
+  welcomeName.innerText = `Welcome ${user.getFirstName()}`;
   stepGoal.innerText = user.dailyStepGoal;
   avgStepGoal.innerText = userRepository.calculateAverageStepGoal();
 });

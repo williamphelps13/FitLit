@@ -21,7 +21,7 @@ describe('HydrationRepo', () => {
     expect(hydrationRepo.data).to.deep.equal(hydrationData);
   });
 
-  it('should be able to get user by ID', () => {
-    expect(hydrationRepo.getUserByID(1)).to.deep.equal(hydrationData[0]);
+  it('should be able to get average ounces for all time for a user', () => {
+    expect(hydrationRepo.getAvgOuncesAllTime(1)).to.equal(67);
   });
 });

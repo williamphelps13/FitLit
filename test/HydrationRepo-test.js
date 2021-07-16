@@ -17,7 +17,7 @@ describe('HydrationRepo', () => {
     expect(hydrationRepo).to.be.an.instanceOf(HydrationRepo);
   });
 
-  it('should be able to hold user data', () => {
+  it('should be able to hold hydration data', () => {
     expect(hydrationRepo.data).to.deep.equal(hydrationData);
   });
 

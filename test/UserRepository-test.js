@@ -2,7 +2,6 @@ import { expect } from 'chai';
 import userData from '../src/data/user-test-data';
 import UserRepository from '../src/UserRepository';
 
-
 describe('User Repository', () => {
   let userRepository;
 

@@ -39,33 +39,15 @@ describe('Hydration', () => {
     ]);
   });
 
-  // it('should be able to store a hydration name', () => {
-  //   expect(hydration.name).to.equal('Luisa Hane');
-  // });
+  it('should be able to get average ounces of water consumer for all time for a user', () => {
+    expect(hydration.getUserAvgOzAllTime(1)).to.equal(67);
+  });
 
-  // it('should be able to store a hydration address', () => {
-  //   expect(hydration.address).to.equal(
-  //     '15195 Nakia Tunnel, Erdmanport VA 19901-1697'
-  //   );
-  // });
+  it('should be able to get ounces consumed for a specific date for a user', () => {
+    expect(hydration.getUserOzByDate('2019/06/16')).to.equal(69);
+  });
 
-  // it('should be able to store a hydration email', () => {
+  // it('should be able to get user data for one week', () => {
   //   expect(hydration.email).to.equal('Diana.Hayes1@hotmail.com');
-  // });
-
-  // it('should be able to store a hydration stride length', () => {
-  //   expect(hydration.strideLength).to.equal(4.3);
-  // });
-
-  // it('should be able to store a hydration daily steps', () => {
-  //   expect(hydration.dailyStepGoal).to.equal(10000);
-  // });
-
-  // it('should be able to store an array of hydration friends by id', () => {
-  //   expect(hydration.friends).to.deep.equal([16, 4, 8]);
-  // });
-
-  // it('should be able to return the first name', () => {
-  //   expect(hydration.getFirstName()).to.equal('Luisa');
   // });
 });

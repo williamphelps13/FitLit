@@ -14,7 +14,10 @@ import HydrationRepo from './HydrationRepo';
 import Hydration from './Hydration';
 
 let userRepository, user, hydrationRepo, hydration, userIndex;
-// function to get data from the API
+
+// function to create random number for user
+const getRandomIndex = () => Math.floor(Math.random() * 50);
+userIndex = getRandomIndex();
 
 const populateDataOnPage = () => {
   document.getElementById(
@@ -27,6 +30,8 @@ const populateDataOnPage = () => {
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
   document.getElementById('stride').innerText = user.strideLength;
+  // Try to refactor this and remove it from the dom manipulation
+  // need to remove commas from display, possibly switch to innerHtml and make new elements
   const friends = user.friends.map((friend) => {
     let currentFriend = new User(userRepository.getUserByID(friend));
     return currentFriend.getFirstName();
@@ -34,9 +39,11 @@ const populateDataOnPage = () => {
   document.getElementById('friends').innerText = friends;
 };
 
-const getRandomIndex = () => Math.floor(Math.random() * 50);
-
-userIndex = getRandomIndex();
+const populateHydrationPage = () => {
+  document.getElementById(
+    'water-today'
+  ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+};
 
 getData('users')
   .then((data) => {
@@ -46,8 +53,10 @@ getData('users')
   })
   .then(populateDataOnPage);
 
-getData('hydration').then((data) => {
-  hydrationRepo = new HydrationRepo(data.hydrationData);
-  hydration = new Hydration(hydrationRepo.getUserHydration(userIndex + 1));
-  console.log(hydration);
-});
+getData('hydration')
+  .then((data) => {
+    hydrationRepo = new HydrationRepo(data.hydrationData);
+    hydration = new Hydration(hydrationRepo.getUserHydration(userIndex + 1));
+    console.log(hydration);
+  })
+  .then(populateHydrationPage);

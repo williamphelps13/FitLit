@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import hydrationData from '../src/data/hydration-test-data';
 import HydrationRepo from '../src/HydrationRepo';
 
-describe('HydrationRepo', () => {
+describe('Hydration Repository', () => {
   let hydrationRepo;
 
   beforeEach(() => {
@@ -21,8 +21,8 @@ describe('HydrationRepo', () => {
     expect(hydrationRepo.data).to.deep.equal(hydrationData);
   });
 
-  it('should be able to retrieve hydration data for a user', () => {
-    expect(hydrationRepo.getUserHydration(1)).to.deep.equal([
+  it('should be able to get hydration data for a user', () => {
+    expect(hydrationRepo.getUserHydrationData(1)).to.deep.equal([
       {
         userID: 1,
         date: '2019/06/15',
@@ -38,6 +38,26 @@ describe('HydrationRepo', () => {
         date: '2019/06/17',
         numOunces: 95,
       },
+      {
+        userID: 1,
+        date: '2019/06/18',
+        numOunces: 61,
+      },
+      {
+        userID: 1,
+        date: '2019/06/19',
+        numOunces: 91,
+      },
+      {
+        userID: 1,
+        date: '2019/06/20',
+        numOunces: 50,
+      },
+      {
+        userID: 1,
+        date: '2019/06/21',
+        numOunces: 50,
+      }
     ]);
   });
 });

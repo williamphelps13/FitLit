@@ -3,15 +3,16 @@ class UserRepository {
     this.data = data;
   }
 
-  getUserByID(userID) {
-    return this.data.find(user => user.id === userID);
+  getUserByID(id) {
+    return this.data.find((user) => user.id === id);
   }
 
-  calculateAverageStepGoal() {
-    return Math.floor(this.data.reduce((totalSteps, userSteps) => {  
-      totalSteps += userSteps.dailyStepGoal;
-      return totalSteps;
-    }, 0) / this.data.length);
+  getAvgStepGoal() {
+    return Math.round(
+      this.data.reduce((totalSteps, userSteps) => {  
+        return (totalSteps += userSteps.dailyStepGoal);
+      }, 0) / this.data.length
+    );
   }
 }
 

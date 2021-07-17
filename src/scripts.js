@@ -50,10 +50,16 @@ const populateHydrationPage = () => {
 const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hrs-today'
-  ).innerText = `Hours: ${sleep.getUserHrsByDate('2020/01/22')}`;
+  ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
   document.getElementById(
     'sleep-quality-today'
   ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
+  document.getElementById(
+    'sleep-hours-avg-all'
+  ).innerText = `${sleep.getUserAvgHrs()} hrs`;
+  document.getElementById(
+    'sleep-quality-avg-all'
+  ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
 };
 
 getData('users')

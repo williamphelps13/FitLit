@@ -8,7 +8,7 @@ describe('Hydration', () => {
 
   beforeEach(() => {
     hydrationRepo = new HydrationRepo(hydrationData);
-    hydration = new Hydration(hydrationRepo.getUserHydration(1));
+    hydration = new Hydration(hydrationRepo.getUserHydrationData(1));
   });
 
   it('should be a function', () => {
@@ -20,43 +20,45 @@ describe('Hydration', () => {
   });
 
   it('should be able to hold a user\'s hydration data', () => {
-    expect(hydration.userHydration).to.deep.equal([
-      {
-        userID: 1,
-        date: '2019/06/15',
-        numOunces: 37,
-      },
-      {
-        userID: 1,
-        date: '2019/06/16',
-        numOunces: 69,
-      },
-      {
-        userID: 1,
-        date: '2019/06/17',
-        numOunces: 95,
-      },
-      {
-        userID: 1,
-        date: '2019/06/18',
-        numOunces: 61,
-      },
-      {
-        userID: 1,
-        date: '2019/06/19',
-        numOunces: 91,
-      },
-      {
-        userID: 1,
-        date: '2019/06/20',
-        numOunces: 50,
-      },
-      {
-        userID: 1,
-        date: '2019/06/21',
-        numOunces: 50,
-      }
-    ]);
+    expect(hydration.userHydration).to.deep.equal(
+      [
+        {
+          userID: 1,
+          date: '2019/06/15',
+          numOunces: 37,
+        },
+        {
+          userID: 1,
+          date: '2019/06/16',
+          numOunces: 69,
+        },
+        {
+          userID: 1,
+          date: '2019/06/17',
+          numOunces: 95,
+        },
+        {
+          userID: 1,
+          date: '2019/06/18',
+          numOunces: 61,
+        },
+        {
+          userID: 1,
+          date: '2019/06/19',
+          numOunces: 91,
+        },
+        {
+          userID: 1,
+          date: '2019/06/20',
+          numOunces: 50,
+        },
+        {
+          userID: 1,
+          date: '2019/06/21',
+          numOunces: 50,
+        }
+      ]
+    );
   });
 
   it('should be able to get average ounces of water consumed for all time for a user', () => {

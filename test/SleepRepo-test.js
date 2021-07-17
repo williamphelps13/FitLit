@@ -22,7 +22,7 @@ describe('Sleep Repository', () => {
   });
 
   it('should be able to get sleep data for a user', () => {
-    expect(sleepRepo.getUserSleep(1)).to.deep.equal([
+    expect(sleepRepo.getUserSleepData(1)).to.deep.equal([
       {
         userID: 1,
         date: "2019/06/15",

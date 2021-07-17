@@ -26,7 +26,7 @@ class Sleep {
   }
 
   // getUserHrsByWeek() {
-
+  
   // }
 
   // getUserQualityByWeek() {

@@ -8,7 +8,7 @@ describe('Sleep', () => {
 
   beforeEach(() => {
     sleepRepo = new SleepRepo(sleepData);
-    sleep = new Sleep(sleepRepo.getUserSleep(1));
+    sleep = new Sleep(sleepRepo.getUserSleepData(1));
   });
 
   it('should be a function', () => {

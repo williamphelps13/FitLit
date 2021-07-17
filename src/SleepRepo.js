@@ -3,7 +3,7 @@ class SleepRepo {
     this.data = data;
   }
   
-  getUserSleep(id) {
+  getUserSleepData(id) {
     return this.data.filter(userEntry => userEntry.userID === id);
   }
   

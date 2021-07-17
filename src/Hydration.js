@@ -16,8 +16,8 @@ class Hydration {
       .numOunces;
   }
 
-  // getUserOzByWeek() {
-
+  // getUserOzByWeek(date) {
+  
   // }
 }
 export default Hydration;

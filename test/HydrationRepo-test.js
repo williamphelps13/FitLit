@@ -22,7 +22,7 @@ describe('Hydration Repository', () => {
   });
 
   it('should be able to get hydration data for a user', () => {
-    expect(hydrationRepo.getUserHydration(1)).to.deep.equal([
+    expect(hydrationRepo.getUserHydrationData(1)).to.deep.equal([
       {
         userID: 1,
         date: '2019/06/15',

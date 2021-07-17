@@ -40,7 +40,35 @@ describe('Sleep Repository', () => {
         date: "2019/06/17",
         hoursSlept: 7.1,
         sleepQuality: 4.1
+      },
+      {
+        userID: 1,
+        date: "2019/06/18",
+        hoursSlept: 10.4,
+        sleepQuality: 3.1
+      },
+      {
+        userID: 1,
+        date: "2019/06/19",
+        hoursSlept: 10.7,
+        sleepQuality: 1.2
+      },
+      {
+        userID: 1,
+        date: "2019/06/20",
+        hoursSlept: 9.3,
+        sleepQuality: 1.2
+      },
+      {
+        userID: 1,
+        date: "2019/06/21",
+        hoursSlept: 7.8,
+        sleepQuality: 4.2
       }
     ]);
+  });
+
+  it.skip('should be able to get average sleep quality for all users', () => {
+    expect(sleepRepo.getAvgQualityAllUsers()).to.equal(3.1);
   });
 });

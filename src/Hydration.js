@@ -3,7 +3,7 @@ class Hydration {
     this.userHydration = userHydration;
   }
 
-  getUserAvgOzAllTime() {
+  getUserAvgOz() {
     return Math.round(
       this.userHydration.reduce((totalOunces, userEntry) => {
         return (totalOunces += userEntry.numOunces);
@@ -15,5 +15,9 @@ class Hydration {
     return this.userHydration.find((userEntry) => userEntry.date === date)
       .numOunces;
   }
+
+  // getUserOzByWeek() {
+
+  // }
 }
 export default Hydration;

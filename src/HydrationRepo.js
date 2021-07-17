@@ -3,7 +3,7 @@ class HydrationRepo {
     this.data = data;
   }
 
-  getUserHydration(id) {
+  getUserHydrationData(id) {
     return this.data.filter((userEntry) => userEntry.userID === id);
   }
 }

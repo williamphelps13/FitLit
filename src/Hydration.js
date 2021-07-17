@@ -16,8 +16,10 @@ class Hydration {
       .numOunces;
   }
 
+  // possibly a method to automatically display today's informatinon(the latest data) automatically.
+
   // getUserOzByWeek(date) {
-  
+
   // }
 }
 export default Hydration;

@@ -10,10 +10,14 @@ console.log('This is the JavaScript entry file - your code begins here.');
 import { getData } from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User';
+import HydrationRepo from './HydrationRepo';
 import Hydration from './Hydration';
 
-let userRepository, user;
-// function to get data from the API
+let userRepository, user, hydrationRepo, hydration, userIndex;
+
+// function to create random number for user
+const getRandomIndex = () => Math.floor(Math.random() * 50);
+userIndex = getRandomIndex();
 
 const populateDataOnPage = () => {
   document.getElementById(
@@ -21,11 +25,13 @@ const populateDataOnPage = () => {
   ).innerText = `Welcome ${user.getFirstName()}`;
   document.getElementById('step-goal').innerText = user.dailyStepGoal;
   document.getElementById('avg-step-goal').innerText =
-    userRepository.calculateAverageStepGoal();
+    userRepository.getAvgStepGoal();
   document.getElementById('name').innerText = user.name;
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
   document.getElementById('stride').innerText = user.strideLength;
+  // Try to refactor this and remove it from the dom manipulation
+  // need to remove commas from display, possibly switch to innerHtml and make new elements
   const friends = user.friends.map((friend) => {
     let currentFriend = new User(userRepository.getUserByID(friend));
     return currentFriend.getFirstName();
@@ -33,9 +39,25 @@ const populateDataOnPage = () => {
   document.getElementById('friends').innerText = friends;
 };
 
+const populateHydrationPage = () => {
+  document.getElementById(
+    'water-today'
+  ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+};
+
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);
-    user = new User(userRepository.data[0]);
+    user = new User(userRepository.data[userIndex]);
+    console.log(user);
   })
   .then(populateDataOnPage);
+
+getData('hydration')
+  .then((data) => {
+    hydrationRepo = new HydrationRepo(data.hydrationData);
+    hydration = new Hydration(
+      hydrationRepo.getUserHydrationData(userIndex + 1)
+    );
+  })
+  .then(populateHydrationPage);

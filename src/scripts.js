@@ -25,7 +25,7 @@ const populateDataOnPage = () => {
   ).innerText = `Welcome ${user.getFirstName()}`;
   document.getElementById('step-goal').innerText = user.dailyStepGoal;
   document.getElementById('avg-step-goal').innerText =
-    userRepository.calculateAverageStepGoal();
+    userRepository.getAvgStepGoal();
   document.getElementById('name').innerText = user.name;
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
@@ -56,7 +56,8 @@ getData('users')
 getData('hydration')
   .then((data) => {
     hydrationRepo = new HydrationRepo(data.hydrationData);
-    hydration = new Hydration(hydrationRepo.getUserHydration(userIndex + 1));
-    console.log(hydration);
+    hydration = new Hydration(
+      hydrationRepo.getUserHydrationData(userIndex + 1)
+    );
   })
   .then(populateHydrationPage);

@@ -12,8 +12,10 @@ import UserRepository from './UserRepository';
 import User from './User';
 import HydrationRepo from './HydrationRepo';
 import Hydration from './Hydration';
+import SleepRepo from './SleepRepo';
+import Sleep from './Sleep';
 
-let userRepository, user, hydrationRepo, hydration, userIndex;
+let userRepository, user, hydrationRepo, hydration, userIndex, sleepRepo, sleep;
 
 // function to create random number for user
 const getRandomIndex = () => Math.floor(Math.random() * 50);
@@ -61,3 +63,8 @@ getData('hydration')
     );
   })
   .then(populateHydrationPage);
+
+getData('sleep').then((data) => {
+  sleepRepo = new SleepRepo(data.sleepData);
+  sleep = new Sleep(sleepRepo.userSleep.getUserSleepData());
+});

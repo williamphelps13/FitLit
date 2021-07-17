@@ -47,11 +47,19 @@ const populateHydrationPage = () => {
   ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
 };
 
+const populateSleepOnPage = () => {
+  document.getElementById(
+    'sleep-hrs-today'
+  ).innerText = `Hours: ${sleep.getUserHrsByDate('2020/01/22')}`;
+  document.getElementById(
+    'sleep-quality-today'
+  ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
+};
+
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);
     user = new User(userRepository.data[userIndex]);
-    console.log(user);
   })
   .then(populateDataOnPage);
 
@@ -64,7 +72,9 @@ getData('hydration')
   })
   .then(populateHydrationPage);
 
-getData('sleep').then((data) => {
-  sleepRepo = new SleepRepo(data.sleepData);
-  sleep = new Sleep(sleepRepo.userSleep.getUserSleepData());
-});
+getData('sleep')
+  .then((data) => {
+    sleepRepo = new SleepRepo(data.sleepData);
+    sleep = new Sleep(sleepRepo.getUserSleepData(userIndex + 1));
+  })
+  .then(populateSleepOnPage);

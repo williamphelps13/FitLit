@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import sleepData from '../src/data/sleep-test-data';
 import SleepRepo from '../src/SleepRepo';
+import Sleep from '../src/Sleep';
 
 describe('Sleep Repository', () => {
   let sleepRepo;
@@ -22,50 +23,9 @@ describe('Sleep Repository', () => {
   });
 
   it('should be able to get sleep data for a user', () => {
-    expect(sleepRepo.getUserSleepData(1)).to.deep.equal([
-      {
-        userID: 1,
-        date: "2019/06/15",
-        hoursSlept: 6.1,
-        sleepQuality: 2.2
-      },
-      {
-        userID: 1,
-        date: "2019/06/16",
-        hoursSlept: 4.1,
-        sleepQuality: 3.8
-      },
-      {
-        userID: 1,
-        date: "2019/06/17",
-        hoursSlept: 7.1,
-        sleepQuality: 4.1
-      },
-      {
-        userID: 1,
-        date: "2019/06/18",
-        hoursSlept: 10.4,
-        sleepQuality: 3.1
-      },
-      {
-        userID: 1,
-        date: "2019/06/19",
-        hoursSlept: 10.7,
-        sleepQuality: 1.2
-      },
-      {
-        userID: 1,
-        date: "2019/06/20",
-        hoursSlept: 9.3,
-        sleepQuality: 1.2
-      },
-      {
-        userID: 1,
-        date: "2019/06/21",
-        hoursSlept: 7.8,
-        sleepQuality: 4.2
-      }
-    ]);
+    let sleep = new Sleep(sleepRepo.getUserSleepData(1));
+
+    expect(sleepRepo.getUserSleepData(1)).to.deep.equal(sleep.userSleep);
   });
 
   it.skip('should be able to get average sleep quality for all users', () => {

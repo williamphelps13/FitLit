@@ -16,6 +16,7 @@ import SleepRepo from './SleepRepo';
 import Sleep from './Sleep';
 
 let userRepository, user, hydrationRepo, hydration, userIndex, sleepRepo, sleep;
+let newUsers = [];
 
 // function to create random number for user
 const getRandomIndex = () => Math.floor(Math.random() * 50);
@@ -45,6 +46,9 @@ const populateHydrationPage = () => {
   document.getElementById(
     'water-today'
   ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+  document.getElementById(
+    'water-week'
+  ).innerText = `${hydration.getUserOzByWeek('2019/08/22')}`;
 };
 
 const populateSleepOnPage = () => {
@@ -60,12 +64,19 @@ const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-quality-avg-all'
   ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
+  document.getElementById(
+    'sleep-week-hours'
+  ).innerText = `Hours: ${sleep.getUserHrsByWeek('2020/01/22')}`;
+  document.getElementById(
+    'sleep-week-quality'
+  ).innerText = `Quality: ${sleep.getUserQualityByWeek('2020/01/22')}`;
 };
 
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);
     user = new User(userRepository.data[userIndex]);
+    newUsers.push(userRepository.data);
   })
   .then(populateDataOnPage);
 

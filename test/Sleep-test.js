@@ -40,55 +40,14 @@ describe('Sleep', () => {
   });
 
   it('should be able to get hrs slept each day for a week for a user', () => {
-    expect(sleep.getUserHrsByWeek('2019/06/16')).to.deep.equal([
-      {
-        userID: 1,
-        date: '2019/06/16',
-        hoursSlept: 4.1,
-        sleepQuality: 3.8,
-      },
-      {
-        userID: 1,
-        date: '2019/06/17',
-        hoursSlept: 8,
-        sleepQuality: 2.6,
-      },
-      {
-        userID: 1,
-        date: '2019/06/18',
-        hoursSlept: 10.4,
-        sleepQuality: 3.1,
-      },
-      {
-        userID: 1,
-        date: '2019/06/19',
-        hoursSlept: 10.7,
-        sleepQuality: 1.2,
-      },
-      {
-        userID: 1,
-        date: '2019/06/20',
-        hoursSlept: 9.3,
-        sleepQuality: 1.2,
-      },
-      {
-        userID: 1,
-        date: '2019/06/21',
-        hoursSlept: 7.8,
-        sleepQuality: 4.2,
-      },
-      {
-        userID: 1,
-        date: '2019/06/22',
-        hoursSlept: 7,
-        sleepQuality: 3,
-      },
+    expect(sleep.getUserHrsByWeek('2019/06/22')).to.deep.equal([
+      4.1, 8, 10.4, 10.7, 9.3, 7.8, 7,
     ]);
   });
 
-  it.skip('should be able to get sleep quality each day for a week for a user', () => {
-    expect(sleep.getUserQualityByWeek()).to.equal([
-      2.2, 3.8, 4.1, 3.1, 1.2, 1.2, 4.2,
+  it('should be able to get sleep quality each day for a week for a user', () => {
+    expect(sleep.getUserQualityByWeek('2019/07/12')).to.deep.equal([
+      1.4, 4.8, 4.7, 4.9, 3.2, 2.8, 2.6,
     ]);
   });
 });

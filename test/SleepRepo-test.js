@@ -28,7 +28,7 @@ describe('Sleep Repository', () => {
     expect(sleepRepo.getUserSleepData(1)).to.deep.equal(sleep.userSleep);
   });
 
-  it.skip('should be able to get average sleep quality for all users', () => {
-    expect(sleepRepo.getAvgQualityAllUsers()).to.equal(3.1);
+  it('should be able to get average sleep quality for all users', () => {
+    expect(sleepRepo.getAvgQualityAllUsers()).to.equal(3);
   });
 });

@@ -40,21 +40,17 @@ class Sleep {
   getUserHrsByWeek(date) {
     const target = this.userSleep.find((userEntry) => userEntry.date === date);
     const index = this.userSleep.indexOf(target);
-    if (index > -1) {
-      return this.userSleep
-        .splice(index, 7)
-        .map((userEntry) => userEntry.hoursSlept);
-    }
+    return this.userSleep
+      .map((userEntry) => userEntry.hoursSlept)
+      .slice(index - 6, index + 1);
   }
 
   getUserQualityByWeek(date) {
     const target = this.userSleep.find((userEntry) => userEntry.date === date);
     const index = this.userSleep.indexOf(target);
-    if (index > -1) {
-      return this.userSleep
-        .splice(index, 7)
-        .map((userEntry) => userEntry.sleepQuality);
-    }
+    return this.userSleep
+      .map((userEntry) => userEntry.sleepQuality)
+      .slice(index - 6, index + 1);
   }
 }
 

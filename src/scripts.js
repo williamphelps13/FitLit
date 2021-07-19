@@ -12,8 +12,11 @@ import UserRepository from './UserRepository';
 import User from './User';
 import HydrationRepo from './HydrationRepo';
 import Hydration from './Hydration';
+import SleepRepo from './SleepRepo';
+import Sleep from './Sleep';
 
-let userRepository, user, hydrationRepo, hydration, userIndex;
+let userRepository, user, hydrationRepo, hydration, userIndex, sleepRepo, sleep;
+let newUsers = [];
 
 // function to create random number for user
 const getRandomIndex = () => Math.floor(Math.random() * 50);
@@ -43,13 +46,37 @@ const populateHydrationPage = () => {
   document.getElementById(
     'water-today'
   ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+  document.getElementById(
+    'water-week'
+  ).innerText = `${hydration.getUserOzByWeek('2019/08/22')}`;
+};
+
+const populateSleepOnPage = () => {
+  document.getElementById(
+    'sleep-hrs-today'
+  ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
+  document.getElementById(
+    'sleep-quality-today'
+  ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
+  document.getElementById(
+    'sleep-hours-avg-all'
+  ).innerText = `${sleep.getUserAvgHrs()} hrs`;
+  document.getElementById(
+    'sleep-quality-avg-all'
+  ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
+  document.getElementById(
+    'sleep-week-hours'
+  ).innerText = `Hours: ${sleep.getUserHrsByWeek('2020/01/22')}`;
+  document.getElementById(
+    'sleep-week-quality'
+  ).innerText = `Quality: ${sleep.getUserQualityByWeek('2020/01/22')}`;
 };
 
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);
     user = new User(userRepository.data[userIndex]);
-    console.log(user);
+    newUsers.push(userRepository.data);
   })
   .then(populateDataOnPage);
 
@@ -61,3 +88,10 @@ getData('hydration')
     );
   })
   .then(populateHydrationPage);
+
+getData('sleep')
+  .then((data) => {
+    sleepRepo = new SleepRepo(data.sleepData);
+    sleep = new Sleep(sleepRepo.getUserSleepData(userIndex + 1));
+  })
+  .then(populateSleepOnPage);

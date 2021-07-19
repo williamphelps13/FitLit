@@ -11,15 +11,30 @@ class Hydration {
     );
   }
 
+  // We are not using this function and this has not been tested!!!
+  getLatestOz() {
+    return this.userHydration.splice(this.userHydration.length);
+  }
+
   getUserOzByDate(date) {
     return this.userHydration.find((userEntry) => userEntry.date === date)
       .numOunces;
   }
 
-  // possibly a method to automatically display today's informatinon(the latest data) automatically.
-
-  // getUserOzByWeek(date) {
-
-  // }
+  getUserOzByWeek(date) {
+    const target = this.userHydration.find(
+      (userEntry) => userEntry.date === date
+    );
+    const index = this.userHydration.indexOf(target);
+    if (index < 7) {
+      return this.userHydration
+        .map((userEntry) => userEntry.numOunces)
+        .slice(0, index + 1);
+    } else {
+      return this.userHydration
+        .map((userEntry) => userEntry.numOunces)
+        .slice(index - 6, index + 1);
+    }
+  }
 }
 export default Hydration;

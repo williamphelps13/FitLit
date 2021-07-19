@@ -27,13 +27,17 @@ class Hydration {
     );
     const index = this.userHydration.indexOf(target);
     if (index < 7) {
-      return this.userHydration
-        .map((userEntry) => userEntry.numOunces)
-        .slice(0, index + 1);
+      return this.userHydration.slice(0, index + 1).map((userEntry) => ({
+        date: userEntry.date,
+        numOunces: userEntry.numOunces,
+      }));
     } else {
       return this.userHydration
-        .map((userEntry) => userEntry.numOunces)
-        .slice(index - 6, index + 1);
+        .slice(index - 6, index + 1)
+        .map((userEntry) => ({
+          date: userEntry.date,
+          numOunces: userEntry.numOunces,
+        }));
     }
   }
 }

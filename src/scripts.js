@@ -7,6 +7,7 @@ import './images/turing-logo.png';
 console.log('This is the JavaScript entry file - your code begins here.');
 
 // An example of how you tell webpack to use a JS file
+import Chart from 'chart.js/auto';
 import { getData } from './apiCalls';
 import UserRepository from './UserRepository';
 import User from './User';
@@ -43,14 +44,38 @@ const populateDataOnPage = () => {
 };
 
 const populateHydrationPage = () => {
+  console.log();
   document.getElementById(
     'water-today'
   ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
-  document.getElementById(
-    'water-week'
-  ).innerText = `${hydration.getUserOzByWeek('2019/08/22')}`;
-};
 
+  let waterWeek = new Chart(document.getElementById('water-week'), {
+    type: 'bar',
+    data: {
+      labels: hydration.getUserOzByWeek('2019/06/20').date,
+      datasets: [
+        {
+          label: 'Water Drank (oz)',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: hydration.getUserOzByWeek('2019/06/20').ounces,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Water Drank over last 7 Days (oz)',
+      },
+    },
+  });
+};
 const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hrs-today'
@@ -61,15 +86,68 @@ const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hours-avg-all'
   ).innerText = `${sleep.getUserAvgHrs()} hrs`;
-  document.getElementById(
-    'sleep-quality-avg-all'
-  ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
-  document.getElementById(
-    'sleep-week-hours'
-  ).innerText = `Hours: ${sleep.getUserHrsByWeek('2020/01/22')}`;
-  document.getElementById(
-    'sleep-week-quality'
-  ).innerText = `Quality: ${sleep.getUserQualityByWeek('2020/01/22')}`;
+  // document.getElementById(
+  //   'sleep-quality-avg-all'
+  // ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
+  // document.getElementById(
+  //   'sleep-week-hours'
+  // ).innerText = `Hours: ${}`;
+  let sleepQualityWeek = new Chart(
+    document.getElementById('sleep-week-quality'),
+    {
+      type: 'bar',
+      data: {
+        labels: sleep.getUserQualityByWeek('2020/01/22').date,
+        datasets: [
+          {
+            label: 'Quality',
+            backgroundColor: [
+              '#3e95cd',
+              '#8e5ea2',
+              '#3cba9f',
+              '#e8c3b9',
+              '#c45850',
+            ],
+            data: sleep.getUserQualityByWeek('2020/01/22').quality,
+          },
+        ],
+      },
+      options: {
+        legend: { display: false },
+        title: {
+          display: true,
+          text: 'Quality of Sleep over last 7 Days (oz)',
+        },
+      },
+    }
+  );
+
+  let sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
+    type: 'bar',
+    data: {
+      labels: sleep.getUserHrsByWeek('2020/01/22').date,
+      datasets: [
+        {
+          label: 'Quality',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: sleep.getUserHrsByWeek('2020/01/22').hours,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Hours of Sleep over last 7 Days (oz)',
+      },
+    },
+  });
 };
 
 getData('users')

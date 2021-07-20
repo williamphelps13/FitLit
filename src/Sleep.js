@@ -41,13 +41,21 @@ class Sleep {
     const target = this.userSleep.find((userEntry) => userEntry.date === date);
     const index = this.userSleep.indexOf(target);
     if (index < 7) {
-      return this.userSleep
-        .map((userEntry) => userEntry.hoursSlept)
-        .slice(0, index + 1);
+      let dates = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.date);
+      let hoursSlept = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.hoursSlept);
+      return { date: dates, quality: hoursSlept };
     } else {
-      return this.userSleep
-        .map((userEntry) => userEntry.hoursSlept)
-        .slice(index - 6, index + 1);
+      let dates = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.date);
+      let hoursSlept = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.hoursSlept);
+      return { date: dates, quality: hoursSlept };
     }
   }
 
@@ -55,13 +63,21 @@ class Sleep {
     const target = this.userSleep.find((userEntry) => userEntry.date === date);
     const index = this.userSleep.indexOf(target);
     if (index < 7) {
-      return this.userSleep
-        .map((userEntry) => userEntry.sleepQuality)
-        .slice(0, index + 1);
+      let dates = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.date);
+      let sleepQuality = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.sleepQuality);
+      return { date: dates, quality: sleepQuality };
     } else {
-      return this.userSleep
-        .map((userEntry) => userEntry.sleepQuality)
-        .slice(index - 6, index + 1);
+      let dates = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.date);
+      let sleepQuality = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.sleepQuality);
+      return { date: dates, quality: sleepQuality };
     }
   }
 }

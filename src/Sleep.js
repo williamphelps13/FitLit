@@ -47,7 +47,7 @@ class Sleep {
       let hoursSlept = this.userSleep
         .slice(0, index + 1)
         .map((userEntry) => userEntry.hoursSlept);
-      return { date: dates, quality: hoursSlept };
+      return { date: dates, hours: hoursSlept };
     } else {
       let dates = this.userSleep
         .slice(index - 6, index + 1)
@@ -55,7 +55,7 @@ class Sleep {
       let hoursSlept = this.userSleep
         .slice(index - 6, index + 1)
         .map((userEntry) => userEntry.hoursSlept);
-      return { date: dates, quality: hoursSlept };
+      return { date: dates, hours: hoursSlept };
     }
   }
 

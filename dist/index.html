@@ -8,34 +8,37 @@
     <title>FitLit Activity Tracker</title>
   </head>
   <body>
-    <section class="welcome">
-      <h1 id="welcome"></h1>
+    <section>
+      <h1 class="welcome" id="welcome"></h1>
     </section>
     <section>
       <h2>Water Today</h2>
-      <p class = "spaced big" id="water-today"></p>
+      <canvas class="waterToday" id="water-today"></canvas>
     </section>
     <section>
       <h2>Water for Last 7 Days</h2>
-      <canvas class="waterWeek" id="water-week"></canvas>
+      <canvas class="waterWeek barGraph" id="water-week"></canvas>
     </section>
     <section>
-      <h2>Sleep Today</h2>
-      <p class="spaced medium" id="sleep-hrs-today"></p>
-      <p class="spaced medium" id="sleep-quality-today"></p>
+      <h2>Hours of Sleep</h2>
+      <canvas class="sleepHrsToday" id="sleep-hrs-today"></canvas>
+    </section>
+    <section>
+      <h2>Quality of Sleep</h2>
+      <canvas class="sleepQualityToday" id="sleep-quality-today"></canvas>
     </section>
     <section>
       <h2>Hours of Sleep for Last 7 Days</h2>
-      <canvas class="sleepWeek" id="sleep-week-hours"></canvas>
+      <canvas class="sleepWeek barGraph" id="sleep-week-hours"></canvas>
     </section>
     <section>
       <h2>Quality of Sleep for Last 7 Days</h2>
-      <canvas class="sleepWeek" id="sleep-week-quality"></canvas>
+      <canvas class="sleepWeek barGraph" id="sleep-week-quality"></canvas>
     </section>
-    <section>
+    <section class= "sleepAverage">
       <h2>Sleep Avg All Time</h2>
-      <p class="spaced medium" id="sleep-hours-avg-all"></p>
-      <p class="spaced medium" id="sleep-quality-avg-all"></p>
+      <p class="sleepHoursAvgAll" id="sleep-hours-avg-all"></p>
+      <p class="sleepQualityAvgAll" id="sleep-quality-avg-all"></p>
     </section>
     <section>
       <h2>Step Goal</h2>

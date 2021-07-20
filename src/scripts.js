@@ -27,9 +27,30 @@ const populateDataOnPage = () => {
   document.getElementById(
     'welcome'
   ).innerText = `Welcome ${user.getFirstName()}`;
-  document.getElementById('step-goal').innerText = user.dailyStepGoal;
-  document.getElementById('avg-step-goal').innerText =
-    userRepository.getAvgStepGoal();
+  // document.getElementById('step-goal').innerText = user.dailyStepGoal;
+  // document.getElementById('avg-step-goal').innerText =
+  //   userRepository.getAvgStepGoal();
+  let stepGoal = new Chart(document.getElementById('step-goal'), {
+    type: 'bar',
+    data: {
+      labels: ['Your Goal', 'All User Goal'],
+      datasets: [
+        {
+          label: 'Steps',
+          backgroundColor: ["#3e95cd","#c45850"],
+          data: [user.dailyStepGoal, userRepository.getAvgStepGoal()]
+        }
+      ]
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+  
   document.getElementById('name').innerText = user.name;
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
@@ -97,7 +118,6 @@ const populateHydrationPage = () => {
 };
 
 const populateSleepOnPage = () => {
-
   // document.getElementById(
   //   'sleep-hrs-today'
   // ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
@@ -145,6 +165,11 @@ const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hours-avg-all'
   ).innerText = `${sleep.getUserAvgHrs()} hrs`;
+
+  document.getElementById(
+    'sleep-quality-avg-all'
+  ).innerText = `${sleep.getUserAvgQuality()} hrs`;
+
   // document.getElementById(
   //   'sleep-quality-avg-all'
   // ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
@@ -178,7 +203,7 @@ const populateSleepOnPage = () => {
       }
     },
   });
-  
+
   let sleepQualityWeek = new Chart(
     document.getElementById('sleep-week-quality'),
     {

@@ -86,15 +86,38 @@ const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hours-avg-all'
   ).innerText = `${sleep.getUserAvgHrs()} hrs`;
-  document.getElementById(
-    'sleep-quality-avg-all'
-  ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
-  document.getElementById(
-    'sleep-week-hours'
-  ).innerText = `Hours: ${sleep.getUserHrsByWeek('2020/01/22')}`;
-  document.getElementById(
-    'sleep-week-quality'
-  ).innerText = `Quality: ${sleep.getUserQualityByWeek('2020/01/22')}`;
+  // document.getElementById(
+  //   'sleep-quality-avg-all'
+  // ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
+  // document.getElementById(
+  //   'sleep-week-hours'
+  // ).innerText = `Hours: ${}`;
+  let sleepWeek = new Chart(document.getElementById('sleep-week-quality'), {
+    type: 'bar',
+    data: {
+      labels: sleep.getUserQualityByWeek('2020/01/22').date,
+      datasets: [
+        {
+          label: 'Quality',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: sleep.getUserQualityByWeek('2020/01/22').quality,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Quality of Sleep over last 7 Days (oz)',
+      },
+    },
+  });
 };
 
 getData('users')

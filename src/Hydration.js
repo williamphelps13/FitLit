@@ -27,17 +27,21 @@ class Hydration {
     );
     const index = this.userHydration.indexOf(target);
     if (index < 7) {
-      return this.userHydration.slice(0, index + 1).map((userEntry) => ({
-        date: userEntry.date,
-        numOunces: userEntry.numOunces,
-      }));
+      let dates = this.userHydration
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.date);
+      let numOunces = this.userHydration
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.numOunces);
+      return { date: dates, ounces: numOunces };
     } else {
-      return this.userHydration
+      let dates = this.userHydration
         .slice(index - 6, index + 1)
-        .map((userEntry) => ({
-          date: userEntry.date,
-          numOunces: userEntry.numOunces,
-        }));
+        .map((userEntry) => userEntry.date);
+      let numOunces = this.userHydration
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.numOunces);
+      return { date: dates, ounces: numOunces };
     }
   }
 }

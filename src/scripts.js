@@ -44,14 +44,38 @@ const populateDataOnPage = () => {
 };
 
 const populateHydrationPage = () => {
+  console.log();
   document.getElementById(
     'water-today'
   ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
-  // document.getElementById(
-  //   'water-week'
-  // ).innerText = ;
+
+  let waterWeek = new Chart(document.getElementById('water-week'), {
+    type: 'bar',
+    data: {
+      labels: hydration.getUserOzByWeek('2019/06/20').date,
+      datasets: [
+        {
+          label: 'Water Drank (oz)',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: hydration.getUserOzByWeek('2019/06/20').ounces,
+        },
+      ],
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Water Drank over last 7 Days (oz)',
+      },
+    },
+  });
 };
-// `${hydration.getUserOzByWeek('2019/08/22')}`
 const populateSleepOnPage = () => {
   document.getElementById(
     'sleep-hrs-today'
@@ -96,30 +120,3 @@ getData('sleep')
     sleep = new Sleep(sleepRepo.getUserSleepData(userIndex + 1));
   })
   .then(populateSleepOnPage);
-
-let waterWeek = new Chart(document.getElementById('water-week'), {
-  type: 'bar',
-  data: {
-    labels: ['1/16', '1/17', '1/18', '1/19', '1/20', '1/21', '1/22'],
-    datasets: [
-      {
-        label: 'Water Drank (oz)',
-        backgroundColor: [
-          '#3e95cd',
-          '#8e5ea2',
-          '#3cba9f',
-          '#e8c3b9',
-          '#c45850',
-        ],
-        data: [50, 80, 90, 40, 50, 60, 50],
-      },
-    ],
-  },
-  options: {
-    legend: { display: false },
-    title: {
-      display: true,
-      text: 'Water Drank over last 7 Days (oz)',
-    },
-  },
-});

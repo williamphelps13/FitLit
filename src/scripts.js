@@ -151,6 +151,34 @@ const populateSleepOnPage = () => {
   // document.getElementById(
   //   'sleep-week-hours'
   // ).innerText = `Hours: ${}`;
+
+  let sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
+    type: 'bar',
+    data: {
+      labels: sleep.getUserHrsByWeek('2020/01/22').date,
+      datasets: [
+        {
+          label: 'Hours',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: sleep.getUserHrsByWeek('2020/01/22').hours,
+        },
+      ],
+    },
+    options: {
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    },
+  });
+  
   let sleepQualityWeek = new Chart(
     document.getElementById('sleep-week-quality'),
     {
@@ -172,41 +200,14 @@ const populateSleepOnPage = () => {
         ],
       },
       options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: 'Quality of Sleep over last 7 Days (oz)',
-        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
       },
     }
   );
-
-  let sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
-    type: 'bar',
-    data: {
-      labels: sleep.getUserHrsByWeek('2020/01/22').date,
-      datasets: [
-        {
-          label: 'Quality',
-          backgroundColor: [
-            '#3e95cd',
-            '#8e5ea2',
-            '#3cba9f',
-            '#e8c3b9',
-            '#c45850',
-          ],
-          data: sleep.getUserHrsByWeek('2020/01/22').hours,
-        },
-      ],
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Hours of Sleep over last 7 Days (oz)',
-      },
-    },
-  });
 };
 
 getData('users')

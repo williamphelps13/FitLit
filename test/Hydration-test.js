@@ -34,31 +34,17 @@ describe('Hydration', () => {
   });
 
   it('should be able to get ounces consumed each day for the latest week for a user', () => {
-    expect(hydration.getUserOzByWeek('2019/06/20')).to.deep.equal([
-      {
-        date: '2019/06/15',
-        numOunces: 37,
-      },
-      {
-        date: '2019/06/16',
-        numOunces: 69,
-      },
-      {
-        date: '2019/06/17',
-        numOunces: 96,
-      },
-      {
-        date: '2019/06/18',
-        numOunces: 61,
-      },
-      {
-        date: '2019/06/19',
-        numOunces: 91,
-      },
-      {
-        date: '2019/06/20',
-        numOunces: 50,
-      },
-    ]);
+    console.log(hydration.getUserOzByWeek('2019/06/20'));
+    expect(hydration.getUserOzByWeek('2019/06/20')).to.deep.equal({
+      date: [
+        '2019/06/15',
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+      ],
+      ounces: [37, 69, 96, 61, 91, 50],
+    });
   });
 });

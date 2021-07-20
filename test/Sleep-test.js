@@ -40,14 +40,32 @@ describe('Sleep', () => {
   });
 
   it('should be able to get hrs slept each day for a week for a user', () => {
-    expect(sleep.getUserHrsByWeek('2019/06/22')).to.deep.equal([
-      4.1, 8, 10.4, 10.7, 9.3, 7.8, 7,
-    ]);
+    console.log(sleep.getUserHrsByWeek('2019/06/20'));
+    expect(sleep.getUserHrsByWeek('2019/06/20')).to.deep.equal({
+      date: [
+        '2019/06/15',
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+      ],
+      hours: [6.1, 4.1, 8, 10.4, 10.7, 9.3],
+    });
   });
 
   it('should be able to get sleep quality each day for a week for a user', () => {
-    expect(sleep.getUserQualityByWeek('2019/07/12')).to.deep.equal([
-      1.4, 4.8, 4.7, 4.9, 3.2, 2.8, 2.6,
-    ]);
+    console.log(sleep.getUserQualityByWeek('2019/06/20'));
+    expect(sleep.getUserQualityByWeek('2019/06/20')).to.deep.equal({
+      date: [
+        '2019/06/15',
+        '2019/06/16',
+        '2019/06/17',
+        '2019/06/18',
+        '2019/06/19',
+        '2019/06/20',
+      ],
+      quality: [2.2, 3.8, 2.6, 3.1, 1.2, 1.2],
+    });
   });
 });

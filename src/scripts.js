@@ -44,10 +44,29 @@ const populateDataOnPage = () => {
 };
 
 const populateHydrationPage = () => {
-  console.log();
-  document.getElementById(
-    'water-today'
-  ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+  // document.getElementById(
+  //   'water-today'
+  // ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+
+  let waterToday = new Chart(document.getElementById("water-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Ounces', 'To Goal'],
+      datasets: [
+        {
+          backgroundColor: ["##c45850", "#3e95cd"],
+          data: [hydration.getUserOzByDate('2020/01/22'), (80 - hydration.getUserOzByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+      title: {
+        display: true,
+        text: 'Water Drank Today'
+      }
+    }
+  });
 
   let waterWeek = new Chart(document.getElementById('water-week'), {
     type: 'bar',
@@ -76,13 +95,53 @@ const populateHydrationPage = () => {
     },
   });
 };
+
 const populateSleepOnPage = () => {
-  document.getElementById(
-    'sleep-hrs-today'
-  ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
-  document.getElementById(
-    'sleep-quality-today'
-  ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
+
+  // document.getElementById(
+  //   'sleep-hrs-today'
+  // ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
+  // document.getElementById(
+  //   'sleep-quality-today'
+  // ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
+  let sleepHours = new Chart(document.getElementById("sleep-hrs-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Hours', 'To Goal'],
+      datasets: [
+        {
+          backgroundColor: ["#8e5ea2", "#3e95cd"],
+          data: [sleep.getUserHrsByDate('2020/01/22'), (8 - sleep.getUserHrsByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Sleep Hours Today'
+      }
+    }
+  });
+  
+  let sleepQuality = new Chart(document.getElementById("sleep-quality-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Quality', 'To Goal'],
+      datasets: [
+        {
+          backgroundColor: ["#3cba9f", "#8e5ea2"],
+          data: [sleep.getUserQualityByDate('2020/01/22'), (5 - sleep.getUserQualityByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Sleep Hours Today'
+      }
+    }
+  });
+  
   document.getElementById(
     'sleep-hours-avg-all'
   ).innerText = `${sleep.getUserAvgHrs()} hrs`;

@@ -34,7 +34,6 @@ describe('Hydration', () => {
   });
 
   it('should be able to get ounces consumed each day for the latest week for a user', () => {
-    console.log(hydration.getUserOzByWeek('2019/06/20'));
     expect(hydration.getUserOzByWeek('2019/06/20')).to.deep.equal({
       date: [
         '2019/06/15',

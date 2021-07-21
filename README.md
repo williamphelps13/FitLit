@@ -37,10 +37,11 @@
   </p>
 </p>
 
- <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
+ 
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
+  <summary><h2 style="display: inline-block">Table of Contents</h2></summary>
   <ol>
     <li>
       <a href="#about-the-project">About The Project</a>
@@ -67,6 +68,28 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+Fitlit was a data-handling based project that challenged us to fetch multiple data sets from an API and use them to display health data for a user. We were tasked with impletmenting array protoype methods and *class to class* interaction to extract and calculate useful statisitics for a user to stay aware of their fitness levels.  
+
+The application is intended to allow a user to see all of their hydreation, sleep, and activity data at any given point, as well as be able ot display past activity. It's styling intenet is driven towards viewing on a mobile decive.
+
+*method for displaying a user's average hours of sleep*
+```
+getUserAvgHrs() {
+    return (
+      Math.round(
+        (this.userSleep.reduce((totalHrs, userEntry) => {
+          return (totalHrs += userEntry.hoursSlept);
+        }, 0) /
+          this.userSleep.length) *
+          10
+      ) / 10
+    );
+  }
+  ```
+  
+ 
+  
+  
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 
@@ -109,10 +132,32 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
+The method belonging to the `sleep class` below extracts 7 days worth of data dsiplaying that day and the prevoious 6 days inforamtion. The array needed to return an object with two properties with each property assigned to the value of an array. This method also allows for displaying weeks that may not have 7 days worth of data. The reason requiring this was to allow for dynamic inputs of data into the `chart.js` objects. We know, it needs some refactoring *[(hint, hint)]*(https://github.com/williamphelps13/FitLit/issues)
 
-
+```
+getUserHrsByWeek(date) {
+    const target = this.userSleep.find((userEntry) => userEntry.date === date);
+    const index = this.userSleep.indexOf(target);
+    if (index < 7) {
+      let dates = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.date);
+      let hoursSlept = this.userSleep
+        .slice(0, index + 1)
+        .map((userEntry) => userEntry.hoursSlept);
+      return { date: dates, hours: hoursSlept };
+    } else {
+      let dates = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.date);
+      let hoursSlept = this.userSleep
+        .slice(index - 6, index + 1)
+        .map((userEntry) => userEntry.hoursSlept);
+      return { date: dates, hours: hoursSlept };
+    }
+  }
+```
 <!-- ROADMAP -->
 ## Roadmap
 

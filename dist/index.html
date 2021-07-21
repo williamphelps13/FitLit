@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://fonts.googleapis.com/css?family=Actor' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Didact Gothic' rel='stylesheet'>
     <title>FitLit Activity Tracker</title>
   </head>
   <body>
@@ -13,49 +13,63 @@
     </section>
     <section>
       <h2>Water Today</h2>
-      <canvas class="waterToday" id="water-today"></canvas>
+      <div>
+        <canvas id="water-today"></canvas>
+      </div>
     </section>
     <section>
       <h2>Water for Last 7 Days</h2>
-      <canvas class="waterWeek barGraph" id="water-week"></canvas>
+      <div>
+        <canvas id="water-week"></canvas>
+      </div>
     </section>
     <section>
       <h2>Hours of Sleep</h2>
-      <canvas class="sleepHrsToday" id="sleep-hrs-today"></canvas>
+      <div>
+        <canvas id="sleep-hrs-today"></canvas>
+      </div>
     </section>
     <section>
       <h2>Quality of Sleep</h2>
-      <canvas class="sleepQualityToday" id="sleep-quality-today"></canvas>
+      <div>
+        <canvas id="sleep-quality-today"></canvas>
+      </div>
     </section>
     <section>
       <h2>Hours of Sleep for Last 7 Days</h2>
-      <canvas class="sleepWeek barGraph" id="sleep-week-hours"></canvas>
+      <div>
+        <canvas id="sleep-week-hours"></canvas>
+      </div>
     </section>
     <section>
       <h2>Quality of Sleep for Last 7 Days</h2>
-      <canvas class="sleepWeek barGraph" id="sleep-week-quality"></canvas>
+      <div>
+        <canvas id="sleep-week-quality"></canvas>
+      </div>
     </section>
     <section class= "sleepAverage">
-      <h2>Sleep Avg All Time</h2>
+      <h2>Sleep Averages (All Time)</h2>
       <p class="sleepHoursAvgAll" id="sleep-hours-avg-all"></p>
       <p class="sleepQualityAvgAll" id="sleep-quality-avg-all"></p>
     </section>
     <section>
       <h2>Step Goal</h2>
-      <canvas class="stepGoal" id="step-goal"></canvas>
+      <div>
+        <canvas id="step-goal"></canvas>
+      </div>
+    </section>
+    <section>
+      <h2>Friends</h2>
+      <p class="friends" id="friends"></p>
     </section>
     <section>
       <h2>Your Info</h2>
-      <div class="alignLeft" id="info">
+      <div id="info">
         <p>Name - <span id="name"></span></p>
         <p>Address - <span id="address"></span></p>
         <p>Email - <span id="email"></span></p>
         <p>Stride Length - <span id="stride"></span></p>
       </div>
-    </section>
-    <section>
-      <h2>Friends</h2>
-      <p class="spaced" id="friends"></p>
     </section>
     <script src="bundle.js"></script>
   </body>

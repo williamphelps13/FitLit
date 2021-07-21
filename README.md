@@ -68,9 +68,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Fitlit was a data-handling based project that challenged us to fetch multiple data sets from an API and use them to display health data for a user. We were tasked with impletmenting array protoype methods and *class to class* interaction to extract and calculate useful statisitics for a user to stay aware of their fitness levels.  
+Fitlit was a data-handling based project that challenged us to fetch multiple data sets from an API and use them to display health data for a user. We were tasked with impletmenting array protoype methods and *class to class* interaction to extract and calculate useful statisitics for a user to stay aware of their fitness levels.
 
-The application is intended to allow a user to see all of their hydreation, sleep, and activity data at any given point, as well as be able ot display past activity. It's styling intenet is driven towards viewing on a mobile decive.
+In addition to handling and dsiplaying data, we also we required to fetch the data from an API set up on a local server and resolve the `promise` into usable data for javascript. 
+
+
 
 *method for displaying a user's average hours of sleep*
 ```
@@ -132,8 +134,10 @@ To get a local copy up and running follow these simple steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+The application is intended to allow a user to see all of their hydreation, sleep, and activity data at any given point, as well as be able ot display past activity. It's styling intenet is driven towards viewing on a mobile device.
 
-The method belonging to the `sleep class` below extracts 7 days worth of data dsiplaying that day and the prevoious 6 days inforamtion. The array needed to return an object with two properties with each property assigned to the value of an array. This method also allows for displaying weeks that may not have 7 days worth of data. The reason requiring this was to allow for dynamic inputs of data into the `chart.js` objects. We know, it needs some refactoring *[(hint, hint)]*(https://github.com/williamphelps13/FitLit/issues)
+
+Example: The method belonging to the `sleep class` below extracts 7 days worth of data dsiplaying that day and the prevoious 6 days inforamtion. The array needed to return an object with two properties with each property assigned to the value of an array. This method also allows for displaying weeks that may not have 7 days worth of data. The reason requiring this was to allow for dynamic inputs of data into the `chart.js` objects. We know, it needs some refactoring *[(hint, hint)](https://github.com/williamphelps13/FitLit/issues)*
 
 ```
 getUserHrsByWeek(date) {

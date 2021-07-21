@@ -19,7 +19,7 @@ const populateDataOnPage = () => {
   document.getElementById(
     'welcome'
   ).innerText = `Welcome ${user.getFirstName()}`;
-  
+
   const stepGoal = new Chart(document.getElementById('step-goal'), {
     type: 'bar',
     data: {
@@ -27,52 +27,57 @@ const populateDataOnPage = () => {
       datasets: [
         {
           label: 'Steps',
-          backgroundColor: ["#3e95cd","#c45850"],
-          data: [user.dailyStepGoal, userRepository.getAvgStepGoal()]
-        }
-      ]
+          backgroundColor: ['#3e95cd', '#c45850'],
+          data: [user.dailyStepGoal, userRepository.getAvgStepGoal()],
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          display: false
-        }
-      }
-    }
+          display: false,
+        },
+      },
+    },
   });
-  
+
   document.getElementById('name').innerText = user.name;
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
   document.getElementById('stride').innerText = user.strideLength;
-  
+
   const friends = user.friends.map((friend) => {
     let currentFriend = new User(userRepository.getUserByID(friend));
     return currentFriend.getFirstName();
   });
 
-  document.getElementById('friends').innerText = friends.map(friend => ` ${friend}`);
+  document.getElementById('friends').innerText = friends.map(
+    (friend) => ` ${friend}`
+  );
 };
 
 const populateHydrationPage = () => {
-  const waterToday = new Chart(document.getElementById("water-today"), {
+  const waterToday = new Chart(document.getElementById('water-today'), {
     type: 'doughnut',
     data: {
       labels: ['Ounces', 'To 120z Goal'],
       datasets: [
         {
           label: 'Water Consumed',
-          backgroundColor: ["#c45850", "#3e95cd"],
-          data: [hydration.getUserOzByDate('2020/01/22'), (120 - hydration.getUserOzByDate('2020/01/22'))]
-        }
-      ]
+          backgroundColor: ['#c45850', '#3e95cd'],
+          data: [
+            hydration.getUserOzByDate('2020/01/22'),
+            120 - hydration.getUserOzByDate('2020/01/22'),
+          ],
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-    }
+    },
   });
 
   const waterWeek = new Chart(document.getElementById('water-week'), {
@@ -98,48 +103,57 @@ const populateHydrationPage = () => {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          display: false
-        }
-      }
+          display: false,
+        },
+      },
     },
   });
 };
 
 const populateSleepOnPage = () => {
-  let sleepHours = new Chart(document.getElementById("sleep-hrs-today"), {
+  let sleepHours = new Chart(document.getElementById('sleep-hrs-today'), {
     type: 'doughnut',
     data: {
       labels: ['Hours', 'To 10hrs Goal'],
       datasets: [
         {
-          backgroundColor: ["#8e5ea2", "#3e95cd"],
-          data: [sleep.getUserHrsByDate('2020/01/22'), (10 - sleep.getUserHrsByDate('2020/01/22'))]
-        }
-      ]
+          backgroundColor: ['#8e5ea2', '#3e95cd'],
+          data: [
+            sleep.getUserHrsByDate('2020/01/22'),
+            10 - sleep.getUserHrsByDate('2020/01/22'),
+          ],
+        },
+      ],
     },
     options: {
       responsive: true,
       maintainAspectRatio: false,
-    }
-  });
-  
-  const sleepQuality = new Chart(document.getElementById("sleep-quality-today"), {
-    type: 'doughnut',
-    data: {
-      labels: ['Quality', 'To 5/5 Goal'],
-      datasets: [
-        {
-          backgroundColor: ["#3cba9f", "#8e5ea2"],
-          data: [sleep.getUserQualityByDate('2020/01/22'), (5 - sleep.getUserQualityByDate('2020/01/22'))]
-        }
-      ]
     },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-    }
   });
-  
+
+  const sleepQuality = new Chart(
+    document.getElementById('sleep-quality-today'),
+    {
+      type: 'doughnut',
+      data: {
+        labels: ['Quality', 'To 5/5 Goal'],
+        datasets: [
+          {
+            backgroundColor: ['#3cba9f', '#8e5ea2'],
+            data: [
+              sleep.getUserQualityByDate('2020/01/22'),
+              5 - sleep.getUserQualityByDate('2020/01/22'),
+            ],
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      },
+    }
+  );
+
   const sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
     type: 'bar',
     data: {
@@ -163,12 +177,12 @@ const populateSleepOnPage = () => {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          display: false
-        }
-      }
+          display: false,
+        },
+      },
     },
   });
-  
+
   const sleepQualityWeek = new Chart(
     document.getElementById('sleep-week-quality'),
     {
@@ -194,23 +208,22 @@ const populateSleepOnPage = () => {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false
-          }
-        }
+            display: false,
+          },
+        },
       },
     }
-    );
+  );
 
-    document.getElementById(
-      'sleep-hours-avg-all'
-    ).innerText = `${sleep.getUserAvgHrs()} hrs`;
-  
-    document.getElementById(
-      'sleep-quality-avg-all'
-    ).innerText = `${sleep.getUserAvgQuality()} / 5 Quality`;
-  };
-  
-  
+  document.getElementById(
+    'sleep-hours-avg-all'
+  ).innerText = `${sleep.getUserAvgHrs()} hrs`;
+
+  document.getElementById(
+    'sleep-quality-avg-all'
+  ).innerText = `${sleep.getUserAvgQuality()} / 5 Quality`;
+};
+
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);

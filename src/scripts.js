@@ -1,12 +1,4 @@
-// An example of how you tell webpack to use a CSS file
 import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png';
-
-console.log('This is the JavaScript entry file - your code begins here.');
-
-// An example of how you tell webpack to use a JS file
 import Chart from 'chart.js/auto';
 import { getData } from './apiCalls';
 import UserRepository from './UserRepository';
@@ -27,32 +19,64 @@ const populateDataOnPage = () => {
   document.getElementById(
     'welcome'
   ).innerText = `Welcome ${user.getFirstName()}`;
-  document.getElementById('step-goal').innerText = user.dailyStepGoal;
-  document.getElementById('avg-step-goal').innerText =
-    userRepository.getAvgStepGoal();
+  
+  const stepGoal = new Chart(document.getElementById('step-goal'), {
+    type: 'bar',
+    data: {
+      labels: ['Your Goal', 'All User Goal'],
+      datasets: [
+        {
+          label: 'Steps',
+          backgroundColor: ["#3e95cd","#c45850"],
+          data: [user.dailyStepGoal, userRepository.getAvgStepGoal()]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    }
+  });
+  
   document.getElementById('name').innerText = user.name;
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
   document.getElementById('stride').innerText = user.strideLength;
-  // Try to refactor this and remove it from the dom manipulation
-  // need to remove commas from display, possibly switch to innerHtml and make new elements
   const friends = user.friends.map((friend) => {
     let currentFriend = new User(userRepository.getUserByID(friend));
     return currentFriend.getFirstName();
   });
-  document.getElementById('friends').innerText = friends;
+  document.getElementById('friends').innerText = friends.map(friend => ` ${friend}`);
 };
 
 const populateHydrationPage = () => {
-  console.log();
-  document.getElementById(
-    'water-today'
-  ).innerText = `${hydration.getUserOzByDate('2020/01/22')} oz`;
+  const waterToday = new Chart(document.getElementById("water-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Ounces', 'To 80z Goal'],
+      datasets: [
+        {
+          label: 'Water Consumed',
+          backgroundColor: ["#c45850", "#3e95cd"],
+          data: [hydration.getUserOzByDate('2020/01/22'), (80 - hydration.getUserOzByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  });
 
-  let waterWeek = new Chart(document.getElementById('water-week'), {
+  const waterWeek = new Chart(document.getElementById('water-week'), {
     type: 'bar',
     data: {
-      labels: hydration.getUserOzByWeek('2019/06/20').date,
+      labels: hydration.getUserOzByWeek('2020/01/22').date,
       datasets: [
         {
           label: 'Water Drank (oz)',
@@ -63,36 +87,88 @@ const populateHydrationPage = () => {
             '#e8c3b9',
             '#c45850',
           ],
-          data: hydration.getUserOzByWeek('2019/06/20').ounces,
+          data: hydration.getUserOzByWeek('2020/01/22').ounces,
         },
       ],
     },
     options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Water Drank over last 7 Days (oz)',
-      },
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
     },
   });
 };
+
 const populateSleepOnPage = () => {
-  document.getElementById(
-    'sleep-hrs-today'
-  ).innerText = `${sleep.getUserHrsByDate('2020/01/22')} hrs`;
-  document.getElementById(
-    'sleep-quality-today'
-  ).innerText = `Quality: ${sleep.getUserQualityByDate('2020/01/22')}`;
-  document.getElementById(
-    'sleep-hours-avg-all'
-  ).innerText = `${sleep.getUserAvgHrs()} hrs`;
-  // document.getElementById(
-  //   'sleep-quality-avg-all'
-  // ).innerText = `Quality: ${sleep.getUserAvgQuality()}`;
-  // document.getElementById(
-  //   'sleep-week-hours'
-  // ).innerText = `Hours: ${}`;
-  let sleepQualityWeek = new Chart(
+  let sleepHours = new Chart(document.getElementById("sleep-hrs-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Hours', 'To 8hrs Goal'],
+      datasets: [
+        {
+          backgroundColor: ["#8e5ea2", "#3e95cd"],
+          data: [sleep.getUserHrsByDate('2020/01/22'), (8 - sleep.getUserHrsByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  });
+  
+  const sleepQuality = new Chart(document.getElementById("sleep-quality-today"), {
+    type: 'doughnut',
+    data: {
+      labels: ['Quality', 'To 5/5 Goal'],
+      datasets: [
+        {
+          backgroundColor: ["#3cba9f", "#8e5ea2"],
+          data: [sleep.getUserQualityByDate('2020/01/22'), (5 - sleep.getUserQualityByDate('2020/01/22'))]
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  });
+  
+  
+  const sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
+    type: 'bar',
+    data: {
+      labels: sleep.getUserHrsByWeek('2020/01/22').date,
+      datasets: [
+        {
+          label: 'Hours',
+          backgroundColor: [
+            '#3e95cd',
+            '#8e5ea2',
+            '#3cba9f',
+            '#e8c3b9',
+            '#c45850',
+          ],
+          data: sleep.getUserHrsByWeek('2020/01/22').hours,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        }
+      }
+    },
+  });
+  
+  const sleepQualityWeek = new Chart(
     document.getElementById('sleep-week-quality'),
     {
       type: 'bar',
@@ -113,43 +189,27 @@ const populateSleepOnPage = () => {
         ],
       },
       options: {
-        legend: { display: false },
-        title: {
-          display: true,
-          text: 'Quality of Sleep over last 7 Days (oz)',
-        },
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
       },
     }
-  );
+    );
 
-  let sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
-    type: 'bar',
-    data: {
-      labels: sleep.getUserHrsByWeek('2020/01/22').date,
-      datasets: [
-        {
-          label: 'Quality',
-          backgroundColor: [
-            '#3e95cd',
-            '#8e5ea2',
-            '#3cba9f',
-            '#e8c3b9',
-            '#c45850',
-          ],
-          data: sleep.getUserHrsByWeek('2020/01/22').hours,
-        },
-      ],
-    },
-    options: {
-      legend: { display: false },
-      title: {
-        display: true,
-        text: 'Hours of Sleep over last 7 Days (oz)',
-      },
-    },
-  });
-};
-
+    document.getElementById(
+      'sleep-hours-avg-all'
+    ).innerText = `${sleep.getUserAvgHrs()} hrs`;
+  
+    document.getElementById(
+      'sleep-quality-avg-all'
+    ).innerText = `${sleep.getUserAvgQuality()} / 5 Quality`;
+  };
+  
+  
 getData('users')
   .then((data) => {
     userRepository = new UserRepository(data.userData);

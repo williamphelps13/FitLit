@@ -126,8 +126,10 @@ To get a local copy up and running follow these simple steps.
 ## Usage
 
 The application is intended to allow a user to see all of their hydreation, sleep, and activity data at any given point, as well as be able ot display past activity. It's styling intenet is driven towards viewing on a mobile device.
-![recording (4)](https://user-images.githubusercontent.com/22990386/126421369-8a079d86-acd6-4031-8960-92b02f934525.gif)
-![recording (5)](https://user-images.githubusercontent.com/22990386/126421376-fca9c057-657d-48a0-ae6b-e02eeb1285ca.gif)
+
+tablet view                   |  mobile view
+:-------------------------:|:-------------------------:
+![recording (4)](https://user-images.githubusercontent.com/22990386/126421369-8a079d86-acd6-4031-8960-92b02f934525.gif)|![recording (5)](https://user-images.githubusercontent.com/22990386/126421376-fca9c057-657d-48a0-ae6b-e02eeb1285ca.gif)
 
 
 Example: The method belonging to the `sleep class` below extracts 7 days worth of data dsiplaying that day and the prevoious 6 days inforamtion. The array needed to return an object with two properties with each property assigned to the value of an array. This method also allows for displaying weeks that may not have 7 days worth of data. The reason requiring this was to allow for dynamic inputs of data into the `chart.js` objects. We know, it needs some refactoring *[(hint, hint)](https://github.com/williamphelps13/FitLit/issues)*

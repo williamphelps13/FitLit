@@ -15,11 +15,6 @@
 
 
 <!-- PROJECT LOGO -->
-<br />
-<p align="center">
-  <a href="https://github.com/williamphelps13/FitLit">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
 
   <h1 align="center">FitLit</h1>
 

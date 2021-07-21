@@ -1,10 +1,14 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
 body {
   background-image: url("https://cdn.dribbble.com/users/47606/screenshots/11021235/media/b83023c7781e7ebc5fa322bceaa8e79f.png");
-  font-family: 'Actor';
+  font-family: 'Didact Gothic';
   display: grid;
   justify-items: center;
 }
-  
 
 section {
   background-color: white;
@@ -13,18 +17,30 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  border-radius: 25px;
+  border-radius: 30px;
   margin-top: 2vh;
   margin-bottom: 2vh;
   height: 40vh;
   width: 90%;
-  padding: 1%;
   overflow: auto;
+}
+
+div {
+  width: 100%;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .welcome {
   font-size: 40px;
   color: black;
+}
+
+h2 {
+  margin-top: 4%;
 }
 
 canvas {
@@ -33,33 +49,25 @@ canvas {
 
 p {
   margin: 5px;
+  font-style: italic;
 }
 
 .sleepAverage {
   display: flex;
-  justify-content: spa`ce-evenly;
+  justify-content: space-evenly;
 }
 
 .sleepHoursAvgAll,
 .sleepQualityAvgAll {
   font-size: 25px;
-  margin: 5% 0% 5% 0%;
-}
-
-.waterToday,
-.sleepHrsToday,
-.sleepQualityToday {
-  height: 130px !important;
-  width: 130px !important;
-}
-
-.stepGoal {
-  height: 125px !important;
-  width: 250px !important;
+  margin: 2% 0% 2% 0%;
+  font-style: italic;
 }
 
 .friends {
-  margin-bottom: 7%;
+  margin-bottom: 15%;
+  font-size: 30px;
+  font-style: italic;
 }
 
 @media screen and (min-width: 480px) {
@@ -70,17 +78,16 @@ p {
   }
 
   section {
-    height: 30vh;
+    height: 40vh;
     width: 90%;
   }
 
-  .barGraph {
-  height: 150px !important;
-  width: 300px !important;
+  p {
+    font-size: 20px;
   }
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 800px) {
   body {
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -89,14 +96,20 @@ p {
 
   section {
     margin-top: 2vh 2vw 2vh 2vw;
-    height: 30vh;
-    width: 90%;
+    height: 50vh;
+    width: 95%;
   }
 
-.waterToday,
-.sleepHrsToday,
-.sleepQualityToday {
-  height: 130px !important;
-  width: 130px !important;
-}
+  h2 {
+    font-size: 24px;;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  div {
+    width: 90%;
+    height: 40vh;
+  }
 }

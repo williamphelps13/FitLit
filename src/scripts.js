@@ -47,10 +47,12 @@ const populateDataOnPage = () => {
   document.getElementById('address').innerText = user.address;
   document.getElementById('email').innerText = user.email;
   document.getElementById('stride').innerText = user.strideLength;
+  
   const friends = user.friends.map((friend) => {
     let currentFriend = new User(userRepository.getUserByID(friend));
     return currentFriend.getFirstName();
   });
+
   document.getElementById('friends').innerText = friends.map(friend => ` ${friend}`);
 };
 
@@ -58,12 +60,12 @@ const populateHydrationPage = () => {
   const waterToday = new Chart(document.getElementById("water-today"), {
     type: 'doughnut',
     data: {
-      labels: ['Ounces', 'To 80z Goal'],
+      labels: ['Ounces', 'To 120z Goal'],
       datasets: [
         {
           label: 'Water Consumed',
           backgroundColor: ["#c45850", "#3e95cd"],
-          data: [hydration.getUserOzByDate('2020/01/22'), (80 - hydration.getUserOzByDate('2020/01/22'))]
+          data: [hydration.getUserOzByDate('2020/01/22'), (120 - hydration.getUserOzByDate('2020/01/22'))]
         }
       ]
     },
@@ -107,11 +109,11 @@ const populateSleepOnPage = () => {
   let sleepHours = new Chart(document.getElementById("sleep-hrs-today"), {
     type: 'doughnut',
     data: {
-      labels: ['Hours', 'To 8hrs Goal'],
+      labels: ['Hours', 'To 10hrs Goal'],
       datasets: [
         {
           backgroundColor: ["#8e5ea2", "#3e95cd"],
-          data: [sleep.getUserHrsByDate('2020/01/22'), (8 - sleep.getUserHrsByDate('2020/01/22'))]
+          data: [sleep.getUserHrsByDate('2020/01/22'), (10 - sleep.getUserHrsByDate('2020/01/22'))]
         }
       ]
     },
@@ -137,7 +139,6 @@ const populateSleepOnPage = () => {
       maintainAspectRatio: false,
     }
   });
-  
   
   const sleepHrsWeek = new Chart(document.getElementById('sleep-week-hours'), {
     type: 'bar',

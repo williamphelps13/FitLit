@@ -13,4 +13,5 @@ class User {
     return this.name.split(' ')[0];
   }
 }
+
 export default User;

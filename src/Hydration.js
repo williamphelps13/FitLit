@@ -11,11 +11,6 @@ class Hydration {
     );
   }
 
-  // We are not using this function and this has not been tested!!!
-  getLatestOz() {
-    return this.userHydration.splice(this.userHydration.length);
-  }
-
   getUserOzByDate(date) {
     return this.userHydration.find((userEntry) => userEntry.date === date)
       .numOunces;
@@ -45,4 +40,5 @@ class Hydration {
     }
   }
 }
+
 export default Hydration;

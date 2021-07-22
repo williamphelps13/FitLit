@@ -24,7 +24,7 @@
     <a href=https://github.com/williamphelps13/FitLit><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://youtu.be/7HvUzkPv6Xo">View Demo</a>
     ·
     <a href="https://github.com/williamphelps13/FitLit/issues">Report Bug</a>
     ·
